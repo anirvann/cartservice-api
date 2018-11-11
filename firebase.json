@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "function": "app"
+    }],
+    "headers": [{
+      "source" : "/cart",
+      "headers" : [{
+        "key" : "Access-Control-Allow-Origin",
+        "value" : "*"
+      }]
+    }]
+  },
+  "functions": {
+    "predeploy": [
+      "node functions/scripts/generateData.js"
+    ]
+  }
+}
